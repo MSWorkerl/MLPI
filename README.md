@@ -3,4 +3,4 @@ MLPI is a general Minecraft launcher programming interface, it can work on any p
 
 Background
 ==========
-MLPI originated from a project of the author (see [PMCL](https://github.com/MSWorkerl/PMCL), but because it is too troublesome to start Minecraft, the author developed MLPI
+MLPI originated from a project of the author (see [PMCL](https://github.com/MSWorkerl/PMCL)), but because it is too troublesome to start Minecraft, the author developed MLPI
