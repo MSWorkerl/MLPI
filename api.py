@@ -178,12 +178,12 @@ def launch_game(minecraft_dir, version, username, java, **kwargs):
                                            get_args(kwargs, "max_memory", const.DEFAULT_MAX_MEMORY_SIZE))
         args += patch_str('-Djava.library.path={}'.format(
             os.path.join(minecraft_dir, "versions", version, "{}-natives".format(version))))
-        if os.path.exists(os.path.join(minecraft_dir, "versions", version, "{}-natives".format(version))):
+        if not os.path.exists(os.path.join(minecraft_dir, "versions", version, "{}-natives".format(version))):
             os.mkdir(os.path.join(minecraft_dir, "versions", version, "{}-natives".format(version)))
         args += " -cp " + patch_str(";".join(get_jars(jsondata["libraries"], minecraft_dir)) + ";" + jarpath + ' ')
         args += " {} ".format(jsondata["mainClass"])
         args += jsondata["minecraftArguments"]
-    _uuid = "".join(str(uuid.uuid1()).split("-")).upper()
+    _uuid = get_args(kwargs,"uuid","".join(str(uuid.uuid1()).split("-")).upper())
     args = args.replace("${auth_player_name}", username)
     args = args.replace("${game_directory}", patch_str((os.path.abspath(minecraft_dir))))
     args = args.replace("${version_name}", patch_str(version))
@@ -193,7 +193,7 @@ def launch_game(minecraft_dir, version, username, java, **kwargs):
     args = args.replace("${auth_uuid}", _uuid)
     args = args.replace("${auth_access_token}", _uuid)
     args = args.replace("${user_properties}", json.dumps({}))
-    args = args.replace("${user_type}", "Legacy")
+    args = args.replace("${user_type}", get_args(kwargs,"login_mode","Legacy"))
     args = args.replace("${version_type}", jsondata["type"])
     args = args.replace("${auth_session}", _uuid)
     args += " ".join([" --width", str(get_args(kwargs, "width", const.DEFAULT_SCREEN_WIDTH))])
