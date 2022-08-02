@@ -21,8 +21,35 @@ Then you can copy MLPI to your project directory and use it
 ## Usage
 
 ### search_java function
--Return value: a dictionary containing the Java version and the path to Java
+- Role: Get the locally installed Java
+- Return value: a dictionary containing the Java version and the path to Java
 
 ### get_minecraft_version function
+- Role: Get the locally installed Minecraft
 - Parameters: .minecraft path
 - Return value: a dictionary containing Minecraft version and Minecraft version type
+
+### init_minecraft function
+- Role: initial .minecraft in the current directory
+
+### launch_game function
+- Role: Start Minecraft
+#### parameter:
+- minecraft_dir: .minecraft folder path
+- version: version to start
+- username:username
+- java:Java path
+- (optional parameter)jvmargs:JVM parameters
+- (optional parameter)launcher_name:launcher name
+- (optional parameter)launcher_version:launcher version
+- (optional parameter)max_memory:maximum memory
+- (optional parameter)min_memory:minimum memory
+- (optional parameter)width:screen width
+- (optional parameter)height:screen height
+- (optional parameter)fullscreen:full screen
+- (optional parameter)demo:demo mode
+- (optional parameter)server:server ip
+- (optional parameter)port:server port
+- (optional parameter)uuid:uuid
+- (optional parameter)login_mode:login mode
+
